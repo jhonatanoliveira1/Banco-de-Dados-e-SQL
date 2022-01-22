@@ -39,7 +39,7 @@ SEXO - CARACTER(1)
 
 ### INICIANDO A MODELAGEM CONCEITUAL
 
-![GitHub Modelagem Conceitual](.github/img/modelagem-conceitual-01.png)
+![GitHub Modelagem Conceitual](https://github.com/jhonatanoliveira1/banco-de-dados-e-SQL/blob/main/.github/img/modelagem-conceitual-01.PNG)
 
 ### INICIANDO A MODELAGEM FÍSICA
 
