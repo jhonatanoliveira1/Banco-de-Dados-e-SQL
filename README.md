@@ -1,4 +1,17 @@
-<h1> MODELAGEM BÁSICA  </h1>
+<h1 style="text-align:center"> MODELAGEM BÁSICA </h1>
+
+<h2> PROCESSOS DE MODELAGEM </h2>
+
+1. MODELAGEM CONCEITUAL - RASCUNHO - (<font color="#7c22d6"><b>DA</b></font>)
+2. MODELAGEM LÓGICA - PROGRAMAS DE MODELAGEM - (<font color="#7c22d6"><b>DA</b></font>)
+3. MODELAGEM FÍSICA - SCRIPTS DE BANCO - (<font color="#7c22d6"><b>DBA/DA</b></font>)
+
+<p>
+<font color="#7c22d6"><b>DA</b></font> - Administração de Dados <br>
+<font color="#7c22d6"><b>BDA</b></font> - Administração de Bancos de Dados
+</p>
+
+<h3> INICIANDO A MODELAGEM CONCEITUAL </h3>
 
 <p> 
 CLIENTE<br>
@@ -11,18 +24,7 @@ ENDERECO - CARACTER(100)<br>
 SEXO - CARACTER(1)<br>
 </p>
 
-<h2> PROCESSOS DE MODELAGEM </h2>
-
-1. MODELAGEM CONCEITUAL - RASCUNHO - (DA)
-2. MODELAGEM LÓGICA - PROGRAMAS DE MODELAGEM - (DA)
-3. MODELAGEM FÍSICA - SCRIPTS DE BANCO - (BDA/DA)
-
-<p>
-DA - Administração de Dados <br>
-DBA - Administração de Bancos de Dados
-</p>
-
-<h3> INICIANDO A MODELAGEM CONCEITUAL </h3>
+<h3> INICIANDO A MODELAGEM LÓGICA </h3>
 
 <a href="https://imgur.com/fJeTHUe"><img src="https://i.imgur.com/fJeTHUe.png" title="source: imgur.com" /></a>
 
@@ -127,7 +129,7 @@ que podemos fazer com uma tipagem correta de tabelas.
 
 <h2>SINTAXE BÁSICA DE INSERÇÃO</h2>
 
-<h4>CONECTANDO-SE AO BANCO</h4>
+<!-- <h4>CONECTANDO-SE AO BANCO</h4>
 
 ```SQL
 
@@ -149,8 +151,9 @@ SHOW TABLES;
 
 DESC CLIENTE;
 
-```
-<!-- <h3>INSERINDO DADOS E VALORES NULOS</h3> -->
+``` -->
+
+<h3>INSERINDO DADOS E VALORES NULOS</h3>
 
 <h4>FORMA 01 - OMITINDO AS COLUNAS</h4>
 
@@ -177,7 +180,7 @@ INSERT INTO CLIENTE(NOME,SEXO,ENDERECO,TELEFONE,CPF) VALUES('THIAGO', 'M', 'RUA 
 
 ```
 
-<h4>FORMA 03 - INSERT COMPACTO - SOMENTE MYSQL </h4>
+<h4>FORMA 03 - INSERT COMPACTO - SOMENTE MYSQL</h4>
 
 ```SQL
 
@@ -205,3 +208,143 @@ INSERT INTO CLIENTE VALUES('LARISSA', 'F', 'LARI@GMAIL.COM', 98863344112, '16999
 
 ```
 
+<h2>O COMANDO SELECT - SELEÇÃO, PROJEÇÃO E JUNÇÃO</h2>
+
+<p>
+<font color="#7c22d6"><b>SELEÇÃO</b></font>
+- A seleção, como o próprio nome já diz, seleciona linhas, tuplas por meio de uma determinada condição.
+
+Ex: nome=“Daniel”(cliente)
+
+A seleção pode ser entendida como uma operação que filtra as linhas de uma relação(tabela), e é uma operação unária, pois opera sobre um único conjunto de dados.
+</p>
+
+<p>
+<font color="#7c22d6"><b>PROJEÇÃO</b></font>
+- A projeção é utilizada quando existe a necessidade de pegar somente colunas de interesse em uma relação, e não trabalhar com todas as colunas dessa relação.
+
+Ex: nome(cliente)
+
+Pode ser entendida como uma operação que filtra as colunas de uma tabela. Por operar sobre apenas um conjunto de entrada é classificada como uma operação unária.
+</p>
+
+<p>
+<font color="#7c22d6"><b>JUNÇÃO</b></font>
+- Logo após a realização de um produto cartesiano em uma relação, geralmente existe a necessidade de se fazer uma seleção na qual os campos que estão em A e também estão em B sejam iguais, porque o produto cartesiano traz tuplas que não são de interesse. A junção é a operação que simplifica tudo isso. Ela realiza um produto cartesiano, depois uma seleção das tuplas de interesse e por fim uma projeção, para remoção de colunas duplicadas.
+
+Ex: (cliente) ⋈ (veiculo)
+
+A tabela resultante de uma junção tem todas as colunas da primeira tabela e todas da segunda tabela.
+
+</p>
+
+<h3>SELECT</h3>
+
+```SQL
+
+SELECT NOW();
+
+SELECT NOW() AS DATA_HORA;
+
+SELECT NOW() AS DATA_HORA, 'JHONATAN' AS ALUNO;
+
+SELECT 'JHONATAN';
+
+SELECT 'BANCO DE DADOS';
+
+```
+
+<h3>ALIAS DE COLUNAS</h3>
+
+```SQL
+
+SELECT NOME AS CLIENTE, SEXO, EMAIL FROM CLIENTE;
+
+SELECT NOME, SEXO, EMAIL FROM CLIENTE;
+
+SELECT NOME, SEXO, EMAIL, ENDERECO FROM CLIENTE;
+
+SELECT EMAIL, SEXO, ENDERECO, NOME FROM CLIENTE;
+
+SELECT EMAIL, SEXO, ENDERECO, NOME, NOW() AS DATA_HORA FROM CLIENTE;
+
+```
+
+<h3>APENAS PARA FINS ACADEMICOS</h3>
+
+```SQL
+
+SELECT * FROM CLIENTE;
+
+```
+
+<h3>FILTRANDO DADOS COM WHERE E LIKE</h3>
+
+
+```SQL
+
+SELECT NOME, TELEFONE FROM CLIENTE;
+
+```
+
+<h3>FILTRANDO</h3>
+
+
+```SQL
+
+SELECT NOME, SEXO
+FROM CLIENTE
+WHERE SEXO = 'M';
+
+SELECT NOME, ENDERECO
+FROM CLIENTE
+WHERE SEXO = 'F';
+
+SELECT NOME, SEXO
+FROM CLIENTE
+WHERE ENDERECO = 'SP';
+
+```
+
+<p>
+<font color="#7c22d6"><b>EMPTY SET</b></font> - CONJUNTO VAZIO
+<br>
+<font color="#0bb1c4"><b>ENDERECO</b></font>  não é igual a <font color="#0bb1c4"><b>SP</b></font> , para dados de aproximação utilizar o <font color="#f70000"><b>LIKE</b></font> 
+</p>
+
+<h3>UTILIZANDO O LIKE</h3>
+
+```SQL
+
+SELECT NOME, SEXO 
+FROM CLIENTE
+WHERE ENDERECO LIKE 'SP';
+
+SELECT NOME, SEXO 
+FROM CLIENTE
+WHERE ENDERECO LIKE 'RJ';
+
+```
+
+<h3>CARACTER CORINGA % -> QUALQUER COISA</h3>
+
+
+```SQL
+
+SELECT NOME, SEXO
+FROM CLIENTE
+WHERE ENDERECO LIKE '%SP';
+
+SELECT NOME, SEXO, ENDERECO
+FROM CLIENTE
+WHERE ENDERECO LIKE '%SP';
+
+SELECT NOME, SEXO, ENDERECO
+FROM CLIENTE
+WHERE ENDERECO LIKE 'RUA MAIA%';
+
+SELECT NOME, SEXO, ENDERECO
+FROM CLIENTE
+WHERE ENDERECO LIKE '%RIBEIRAO PRETO%';
+
+```
