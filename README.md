@@ -5,7 +5,7 @@
 	CAMPOS = ATRIBUTOS 
 </p>
 
-<h4> EXEMPLO: </h4>
+<h3> EXEMPLO: </h3>
 
 <p> 
 CLIENTE<br>
@@ -28,15 +28,20 @@ DOCUMENTO - BLOB<br>
 TEXTO EXTENSO - TEXT<br>
 </p> 
 
-<h3> PROCESSOS DE MODELAGEM </h3>
+<h2> PROCESSOS DE MODELAGEM </h2>
 
-1. MODELAGEM CONCEITUAL
-2. MODELAGEM LÓGICA
-3. MODELAGEM FÍSICA
+<p>FASE 01 E FASE 02 - AD ADM DE DADOS</p>
+
+1. MODELAGEM CONCEITUAL - RASCUNHO
+2. MODELAGEM LÓGICA - PROGRAMAS DE MODELAGEM
+
+<p>FASE 03 - DBA / AD</p>
+
+3. MODELAGEM FÍSICA - SCRIPTS DE BANCO
 
 <h3> INICIANDO A MODELAGEM CONCEITUAL </h3>
 
-![GitHub Modelagem Conceitual](https://github.com/jhonatanoliveira1/banco-de-dados-e-SQL/blob/main/.github/img/modelagem-conceitual-01.PNG)
+<a href="https://imgur.com/fJeTHUe"><img src="https://i.imgur.com/fJeTHUe.png" title="source: imgur.com" /></a>
 
 <h3> INICIANDO A MODELAGEM FÍSICA </h3>
 
@@ -77,6 +82,8 @@ CREATE TABLE CLIENTE (
 
 SHOW TABLES;
 
+USE PROJETO;
+
 ```
 
 <h4> DESCOBRINDO COMO É A ESTRUTURA DE UMA TABELA </h4>
@@ -86,3 +93,6 @@ SHOW TABLES;
 DESC CLIENTE;
 
 ```
+
+<h2>TIPOS DE DADOS</h2>
+
